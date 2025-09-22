@@ -1,11 +1,11 @@
 # A full stack project is TikTok + AI 
 # Backend:
 ## Frame design:
- service governance: spring config + eureka
- Api gateway: spring gateway
- services communite: spring cloud openfeign + gRPC
- circuit breaking and degradation: resillence4j
- mointering and visulization: grafana
+- service governance: spring config + eureka
+- Api gateway: spring gateway
+- services communite: spring cloud openfeign + gRPC
+- circuit breaking and degradation: resillence4j
+- mointering and visulization: grafana
 
 # core tech stacks
 | tech type  |  tech select | version | description |
