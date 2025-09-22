@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/dida-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dida-config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dida-eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dida-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dida-services/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dida-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dida-tools/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/src/main/java" charset="UTF-8" />
+  </component>
+</project>

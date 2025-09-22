@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.5</version>
+        <relativePath/>
+    </parent>
+    <groupId>com.mwu</groupId>
+    <artifactId>backend</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>dida-config</module>
+        <module>dida-eureka</module>
+        <module>dida-common</module>
+        <module>dida-gateway</module>
+        <module>dida-services</module>
+        <module>dida-starter</module>
+        <module>dida-tools</module>
+    </modules>
+
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spring.boot.version>3.4.5</spring.boot.version>
+        <spring.cloud.version>2024.0.1</spring.cloud.version>
+        <hutool.version>5.8.40</hutool.version>
+        <reflections.version>0.10.2</reflections.version>
+        <spring.boot.admin.version>3.5.5</spring.boot.admin.version>
+
+        <lang3.version>3.18.0</lang3.version>
+        <commons.io.version>2.20.0</commons.io.version>
+        <commons-beanutils.version>1.11.0</commons-beanutils.version>
+        <commons.codec.version>1.12</commons.codec.version>
+        <commons.fileupload.version>1.6.0</commons.fileupload.version>
+        <commons.collections.version>4.5.0</commons.collections.version>
+
+        <commons.codec.version>1.18.0</commons.codec.version>
+        <poi.version>5.4.1</poi.version>
+
+    </properties>
+
+    <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>org.springframework.cloud</groupId>
+               <artifactId>spring-cloud-dependencies</artifactId>
+               <version>${spring.cloud.version}</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+
+
+<!--           Reflections library is currently NOT under active development or maintenance-->
+<!--           Spring 原生工具： ClassPathScanningCandidateComponentProvider （适合 Spring 生态）。-->
+<!--           Google Guava： ClassPath （轻量级扫描）。-->
+
+           <!--           <dependency>-->
+<!--               <groupId>org.reflections</groupId>-->
+<!--               <artifactId>reflections</artifactId>-->
+<!--               <version>${reflections.version}</version>-->
+<!--           </dependency>-->
+
+
+           <dependency>
+               <groupId>de.codecentric</groupId>
+               <artifactId>spring-boot-admin-dependencies</artifactId>
+               <version>${spring.boot.admin.version}</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+
+<!--           spring-boot-devtools is a development-only tool that provides features-->
+<!--           like automatic restart and live reload. It is not meant for production.-->
+<!--           By marking it as optional, you ensure it does not get included -->
+<!--           in child modules or in the final packaged application unless explicitly -->
+<!--           added. So yes, it only works for this pom (or any module that directly -->
+<!--           declares it as a dependency).-->
+
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-devtools</artifactId>
+               <optional>true</optional> <!-- 表示依赖不会传递 -->
+           </dependency>
+
+           <!-- token生成与解析 -->
+           <dependency>
+               <groupId>io.jsonwebtoken</groupId>
+               <artifactId>jjwt-api</artifactId>
+               <version>0.12.7</version>
+           </dependency>
+           <dependency>
+               <groupId>io.jsonwebtoken</groupId>
+               <artifactId>jjwt-impl</artifactId>
+               <version>0.12.7</version>
+           </dependency>
+           <dependency>
+               <groupId>io.jsonwebtoken</groupId>
+               <artifactId>jjwt-jackson</artifactId>
+               <version>0.12.7</version>
+           </dependency>
+           <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+           <dependency>
+               <groupId>com.fasterxml.jackson.core</groupId>
+               <artifactId>jackson-databind</artifactId>
+               <version>2.19.2</version>
+           </dependency>
+
+<!--           commons-beanutils: Manipulate JavaBeans properties (copy, convert, etc.).-->
+<!--           commons-io: Utilities for file and stream I/O operations.-->
+<!--           commons-lang3: Extra language features (String, Number, Object, etc.) beyond standard Java.-->
+<!--           commons-collections: Advanced data structures and collection utilities.-->
+<!--           commons-fileupload: Handle file uploads in web applications.-->
+
+
+           <dependency>
+               <groupId>commons-beanutils</groupId>
+               <artifactId>commons-beanutils</artifactId>
+               <version>1.11.0</version>
+           </dependency>
+
+           <dependency>
+               <groupId>commons-beanutils</groupId>
+               <artifactId>commons-beanutils</artifactId>
+               <version>1.11.0</version>
+           </dependency>
+           <!-- Apache 工具包 commons-io -->
+           <dependency>
+               <groupId>commons-io</groupId>
+               <artifactId>commons-io</artifactId>
+               <version>${commons.io.version}</version>
+           </dependency>
+           <dependency>
+               <groupId>org.apache.commons</groupId>
+               <artifactId>commons-lang3</artifactId>
+               <version>${lang3.version}</version>
+           </dependency>
+           <!-- collections工具类 -->
+           <dependency>
+               <groupId>org.apache.commons</groupId>
+               <artifactId>commons-collections4</artifactId>
+               <version>${commons.collections.version}</version>
+           </dependency>
+           <!-- 文件上传工具类 -->
+           <dependency>
+               <groupId>commons-fileupload</groupId>
+               <artifactId>commons-fileupload</artifactId>
+               <version>${commons.fileupload.version}</version>
+           </dependency>
+
+
+           <!-- excel工具 -->
+           <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-full -->
+
+
+           <!-- https://mvnrepository.com/artifact/bitwalker/UserAgentUtils -->
+
+           <!-- 加密处理包 -->
+           <dependency>
+               <groupId>commons-codec</groupId>
+               <artifactId>commons-codec</artifactId>
+               <version>${commons.codec.version}</version>
+           </dependency>
+       </dependencies>
+
+
+
+        <!-- my intellij idea can add these dependencies automatically in dependencies section,
+        but it seems that it cannot add them in dependencyManagement section,
+        so I add them manually here.
+        -->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.google.code.gson/gson &ndash;&gt;-->
+<!--        &lt;!&ndash;        Gson is a Java library from Google used for converting Java objects to &ndash;&gt;-->
+<!--        &lt;!&ndash;        JSON and JSON to Java objects. It is commonly used for JSON serialization&ndash;&gt;-->
+<!--        &lt;!&ndash;        and deserialization in Java applications.&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.google.code.gson</groupId>-->
+<!--            <artifactId>gson</artifactId>-->
+<!--            <version>2.13.2</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.jsoup/jsoup &ndash;&gt;-->
+<!--        &lt;!&ndash;        jsoup is a Java library for parsing, manipulating, and extracting data-->
+<!--         from HTML. It is commonly used for web scraping, cleaning HTML, or working with HTML-->
+<!--         documents in Java.&ndash;&gt;-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.jsoup</groupId>-->
+<!--            <artifactId>jsoup</artifactId>-->
+<!--            <version>1.21.2</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/eu.bitwalker/UserAgentUtils &ndash;&gt;-->
+<!--        &lt;!&ndash; 解析客户端操作系统、浏览器等 &ndash;&gt;-->
+
+<!--        <dependency>-->
+<!--            <groupId>eu.bitwalker</groupId>-->
+<!--            <artifactId>UserAgentUtils</artifactId>-->
+<!--            <version>1.21</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.github.oshi/oshi-core &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.oshi</groupId>-->
+<!--            <artifactId>oshi-core</artifactId>-->
+<!--            <version>6.9.0</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml &ndash;&gt;-->
+<!--        &lt;!&ndash; excel工具 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.poi</groupId>-->
+<!--            <artifactId>poi-ooxml</artifactId>-->
+<!--            <version>5.4.1</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;        core: The main library for encoding and decoding barcodes/QR codes.&ndash;&gt;-->
+<!--        &lt;!&ndash;        javase: Additional utilities and helpers for Java SE (desktop/server) environments, such as reading/writing image&ndash;&gt;-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.google.zxing/core &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.google.zxing</groupId>-->
+<!--            <artifactId>core</artifactId>-->
+<!--            <version>3.5.3</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.google.zxing/javase &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.google.zxing</groupId>-->
+<!--            <artifactId>javase</artifactId>-->
+<!--            <version>3.5.3</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba/transmittable-thread-local &ndash;&gt;-->
+<!--        &lt;!&ndash; 线程传递值 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba</groupId>-->
+<!--            <artifactId>transmittable-thread-local</artifactId>-->
+<!--            <version>2.14.5</version>-->
+<!--        </dependency>-->
+    </dependencyManagement>
+
+    <dependencies>
+<!--        在父模块（parent）的 pom.xml 中引入了 lombok 依赖，所有继承该父模块的子模块（child modules）
+都可以直接使用 lombok，无需在子模块的 pom.xml 中再次声明依赖。Maven 会自动将父模块的依赖传递给子模块。-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+<!--        Spring 和 JDK 自带了一些常用工具类，可以部分替代 Hutool 的部分功能：-->
+<!--        字符串、集合、日期等工具类：可用 org.springframework.util.*（如 StringUtils、CollectionUtils、ObjectUtils 等）和 JDK 的 java.util.*。-->
+<!--        Bean 操作：可用 org.springframework.beans.BeanUtils。-->
+<!--        文件、IO 操作：可用 JDK 的 java.nio.file.*、java.io.*。-->
+<!--        JSON 处理：Spring 推荐使用 jackson（com.fasterxml.jackson.core:jackson-databind）。-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bootstrap -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.plugin</groupId>
+            <artifactId>spring-plugin-core</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+        <!-- 这里显式引入 spring-beans 6.2.11 版本，升级修复安全漏洞
+        因为 spring-plugin-core 依赖会间接（传递性）引入 org.springframework:spring-beans:6.2.6，而该版本存在 CVE-2025-41242 路径遍历漏洞
+        -->
+
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>6.2.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
+        <!-- these dependencies are added manually . It should be in dependencyManagement section. -->
+        <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.13.2</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+    <!--        jsoup is a Java library for parsing, manipulating, and extracting data
+     from HTML. It is commonly used for web scraping, cleaning HTML, or working with HTML
+     documents in Java.-->
+
+    <dependency>
+        <groupId>org.jsoup</groupId>
+        <artifactId>jsoup</artifactId>
+        <version>1.21.2</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/eu.bitwalker/UserAgentUtils -->
+    <!-- 解析客户端操作系统、浏览器等 -->
+
+    <dependency>
+        <groupId>eu.bitwalker</groupId>
+        <artifactId>UserAgentUtils</artifactId>
+        <version>1.21</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
+    <dependency>
+        <groupId>com.github.oshi</groupId>
+        <artifactId>oshi-core</artifactId>
+        <version>6.9.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+    <!-- excel工具 -->
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>5.4.1</version>
+    </dependency>
+    <!--        core: The main library for encoding and decoding barcodes/QR codes.-->
+    <!--        javase: Additional utilities and helpers for Java SE (desktop/server) environments, such as reading/writing image-->
+    <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+    <dependency>
+        <groupId>com.google.zxing</groupId>
+        <artifactId>core</artifactId>
+        <version>3.5.3</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.google.zxing/javase -->
+    <dependency>
+        <groupId>com.google.zxing</groupId>
+        <artifactId>javase</artifactId>
+        <version>3.5.3</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.alibaba/transmittable-thread-local -->
+    <!-- 线程传递值 -->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>transmittable-thread-local</artifactId>
+        <version>2.14.5</version>
+    </dependency>
+    </dependencies>
+
+   <!-- spring-milestones 仓库只用于发布版（快照禁用）。
+    spring-snapshots 仓库只用于快照版（发布版禁用 ）。
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>-->
+
+
+<!--    <repositories>-->
+
+<!--        <repository>-->
+<!--            <id>central</id>-->
+<!--            <name>Maven Central Repository</name>-->
+<!--            <url>https://repo.maven.apache.org/maven2/</url>-->
+<!--            <releases>-->
+<!--                <enabled>true</enabled>-->
+<!--            </releases>-->
+<!--            <snapshots>-->
+<!--                <enabled>false</enabled>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+
+</project>
